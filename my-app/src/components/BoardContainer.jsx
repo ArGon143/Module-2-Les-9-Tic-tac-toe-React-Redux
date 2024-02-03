@@ -1,13 +1,13 @@
+import { useSelector } from 'react-redux';
 import { setFirstPlayerIsNext, setIsWinEndGame, setSquares } from '../store/actions';
 import { store } from '../store/store';
 import { BoardLayout } from './BoardLayout';
 
 export const BoardContainer = () => {
-	const { squares, firstPlayerIsNext } = store.getState();
+	const squares = useSelector((state) => state.squares);
+	const firstPlayerIsNext = useSelector((state) => state.firstPlayerIsNext);
 
 	const handleClick = (i) => {
-		const { squares, firstPlayerIsNext } = store.getState();
-
 		if (squares[i] || calculateWinner(squares)) {
 			return;
 		}

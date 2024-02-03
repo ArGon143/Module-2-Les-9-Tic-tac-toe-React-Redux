@@ -1,10 +1,11 @@
 import styles from './Game.module.css';
-import { store } from '../store/store';
 import { Square } from './Square';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 export const BoardLayout = ({ handleClick, status }) => {
-	const { squares, isWinEndGame } = store.getState();
+	const squares = useSelector((state) => state.squares);
+	const isWinEndGame = useSelector((state) => state.isWinEndGame);
 
 	BoardLayout.propTypes = {
 		handleClick: PropTypes.func,
